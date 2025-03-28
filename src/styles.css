@@ -1,0 +1,45 @@
+body {
+    font-family: "Lato", sans-serif;
+    margin:0px;
+    height: auto;
+  }
+  
+  .sidenav {
+    background-color: #111;
+    padding-top: 20px;
+  }
+  
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 18px; /* Increased text to enable scrolling */
+    color: #818181;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .main {
+    font-size: 18px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+    background-color: #d4d4d4;
+  }
+
+  .m-t-15{
+    margin-top:15px;
+  }
+
+  .m-r-10{
+    margin-right: 10px;
+  }
+
+  .m-t-50{
+    margin-top: 50px;
+  }
+
+  fieldset {
+    border: 2px solid #cd7b7b;
+    padding: 10px;
+  }

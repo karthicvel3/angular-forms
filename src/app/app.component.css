@@ -1,0 +1,13 @@
+.flex-container {
+    display: flex;
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  .flex-item-left {
+    flex: 20%;
+  }
+  
+  .flex-item-right {
+    flex: 80%;
+  }

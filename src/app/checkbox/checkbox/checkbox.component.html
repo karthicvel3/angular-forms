@@ -1,0 +1,17 @@
+<div class="card m-t-50">
+    <h5 class="card-header">CheckBox</h5>
+    <div class="card-body"> 
+          <div [formGroup]="checkFormGroup">
+            <div class="form-check" formArrayName="checkboxFormControl" *ngFor="let value of checkBoxControl.controls;let i =index">
+              <label>{{checkboxesDataList[i].label}}
+              <input class="form-check-input"  [formControlName]="i" type="checkbox">
+            </label>
+            </div>
+          </div>
+          <button  class="btn btn-primary m-t-15"  (click)="clearCheckBox()">Clear</button>
+          <button  class="btn btn-primary m-t-15"  (click)="updatCheckBox()">Update</button>
+          <pre class="m-t-15">
+            {{checkFormGroup.value| json}}
+          </pre>
+    </div>
+  </div>

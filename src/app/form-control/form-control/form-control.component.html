@@ -1,0 +1,22 @@
+<div class="card">
+  <h5 class="card-header">Form Control</h5>
+  <div class="card-body">
+      <div class="row g-3">
+          <div class="col">
+            <input type="text" class="form-control"  [formControl]="name" placeholder="First name" aria-label="First name">
+          </div>
+          <h6>
+            {{name.value}}
+          </h6>
+          <div class="col">
+            <textarea type="text" class="form-control" placeholder="Last name" [formControl]="textAreaValue" aria-label="Last name">
+              </textarea>
+          </div>
+        </div>
+        <button class="btn btn-primary m-t-15"  (click)="onClickFormControl()">Update Input</button>
+        <h6 class="m-t-15">
+          {{textAreaValue.value}}
+        </h6>
+  </div>
+</div>
+

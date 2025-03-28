@@ -1,0 +1,26 @@
+<div class="card">
+    <h5 class="card-header">Dynamic Array</h5>
+    <div class="card-body">
+    <div class="row g-3">
+        <div class="col">
+          <form [formGroup]="dynamicForm">
+            <div *ngFor="let field of fields">
+              <label for="{{field.name}}">{{field.label}}</label>
+              <div [ngSwitch]="field.type">
+           
+                 <textarea class="form-control" *ngSwitchCase="'textarea'" [formControlName]="field.name"></textarea>
+
+                 <input  class="form-control" *ngSwitchCase="'text'"  type="{{field.type || 'text'}}" [formControlName]="field.name" />
+               
+                 <input  class="form-check-input"*ngSwitchDefault  type="{{field.type || 'text'}}" [formControlName]="field.name" />
+
+                </div>
+            </div>
+            <pre>
+              {{dynamicForm.value| json}}
+            </pre>
+          </form>
+        </div>
+    </div>
+  </div>
+</div>
