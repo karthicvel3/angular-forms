@@ -1,18 +1,23 @@
-<div class="container-flux flex-container">
-  <div class="sidenav flex-item-left ">
-    <a routerLink="">1. Form Control</a>
-    <a routerLink="formgroup">2. Form Group</a>
-    <a routerLink="formarray">3. Form Array</a>
-    <a routerLink="checkbox">4. CheckBox</a>
-    <a routerLink="select">5. Select</a>
-    <a routerLink="dynamicformarray">6. Dynamic Form Array</a>
+<div class="app-container">
+  <div class="position-relative">
+    <app-sidebar
+      [isSidebarCollapsed]="isSidebarCollapsed"
+      (sidebarToggle)="onSidebarToggle()"
+    >
+    </app-sidebar>
+    <button
+      class="sidebar-toggle-btn"
+      [ngClass]="{ 'sidebar-collapsed': isSidebarCollapsed }"
+      (click)="onSidebarToggle()"
+    >
+      <i
+        [class]="
+          isSidebarCollapsed ? 'fas fa-arrow-right' : 'fas fa-arrow-left'
+        "
+      ></i>
+    </button>
   </div>
 
-  <div class="main flex-item-right">
-    <h1 class="m-t-15">Angular Form Essentials</h1>
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-  </div>
-
-</div>
+  <main class="content" [ngClass]="{ 'content-expanded': isSidebarCollapsed }">
+    <router-outlet></router-outlet>
+</main>

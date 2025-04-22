@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-select',
@@ -9,12 +9,19 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './select.component.css'
 })
 export class SelectComponent {
-  selectFormControl =  new FormControl('');
-  
+ 
   selectBox =[
     {id:1, name:"one"},
     {id:2, name:"two"},
     {id:3, name:"three"},
     {id:4, name:"four"}
   ]
+  selectboxfromgroup = new FormGroup({
+    selectFormControl: new FormControl('')
+  })
+
+  onSelectBox(valuetext:any){
+    this.selectboxfromgroup.get("selectFormControl")?.setValue(valuetext.target.value)
+  }
+
 }

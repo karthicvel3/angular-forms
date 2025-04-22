@@ -1,19 +1,21 @@
 <div class="card">
     <h5 class="card-header">Form Array</h5>
     <div class="card-body">
+      <form [formGroup]="singleArrayForm">
     <div class="row g-3">
         <div class="col">
             <button type="button" class="btn btn-primary m-r-10" (click)="onAddSkill()">Add Skill</button>
             <button type="button" class="btn btn-primary m-r-10" (click)="onSubmitSkill()">Submit Skill</button>
-            <div>
-                <div *ngFor="let skill of skills.controls; index as i">
+            <div formArrayName="skills">
+                <div *ngFor="let skill of singleControl.controls; index as i">
                   <label class="m-t-15">Add Skills {{i+1}}</label>
-                    <input type="text" class="form-control"  placeholder="skill" aria-label="skill">
+                    <input type="text" class="form-control" placeholder="skill" formControlName="{{i}}" aria-label="skill">
                 </div>
             </div>
         </div>
     </div>
-    <pre class="m-t-15">{{ skills.value | json}}</pre>
+    </form>
+    <pre class="m-t-15">{{ singleArrayForm.value | json}}</pre>
   </div>
 </div>
   
@@ -43,6 +45,7 @@
                       </div>
                   </ng-container>
               </div>
+              <button (click)="onRemoveItem(i)">X</button>
             </ng-container>
           </div>
           <button type="button" class="btn btn-primary  m-t-15 m-r-10" (click)="onMarks()">Add new Control</button>

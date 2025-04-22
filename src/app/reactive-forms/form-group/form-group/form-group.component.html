@@ -1,0 +1,80 @@
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button class="nav-link active"data-bs-toggle="tab" data-bs-target="#nav-formgroup" type="button" role="tab" aria-controls="nav-home" aria-selected="true">FormGroup</button>
+    <button class="nav-link"data-bs-toggle="tab" data-bs-target="#nav-nestedformgroup" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Nested FormGroup</button>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-formgroup" role="tabpanel">
+    <div class="card">
+      <h5 class="card-header">Form Group</h5>
+      <div class="card-body">
+          <form [formGroup]="formGroupSample">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" class="form-control"  formControlName="fname" placeholder="First name" aria-label="First name">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Last name" formControlName="lname" aria-label="Last name">
+              </div>
+            </div>
+  
+            <div class="row g-3 m-t-15">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="First name" formControlName="skill" aria-label="First name">
+              </div>
+              <div class="col">
+                  <button type="button" class="btn btn-primary m-r-10" (click)="onSubmit()">Submit</button>
+                  <button type="button" class="btn btn-secondary m-r-10" (click)="onClear()">Clear</button>
+                  <button type="button" class="btn btn-warning  m-r-10" (click)="onReset()">Reset</button>
+              </div>
+            </div>
+          </form>    
+          <pre class="m-t-15">{{formGroupSample.value| json}}</pre>
+      </div>
+  </div>
+  </div>
+
+
+  <div class="tab-pane fade" id="nav-nestedformgroup" role="tabpanel">
+    <div class="card m-t-50">
+      <h5 class="card-header">Nested FormGroup</h5>
+      <div class="card-body">
+        <form [formGroup]="nestedFormGroupSample">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" class="form-control"  formControlName="fname" placeholder="First name" aria-label="First name">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Last name" formControlName="lname" aria-label="Last name">
+              </div>
+            </div>
+            <div class="row g-3 m-t-15">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="First name" formControlName="skill" aria-label="First name">
+              </div>
+            </div>
+    
+            <fieldset class="m-t-15">
+            <div  class="row g-3 " formGroupName="innerFormGroupSample">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="First name" formControlName="fname" aria-label="First name">
+              </div>
+    
+              <div class="col">
+                <input type="text" class="form-control" placeholder="First name" formControlName="lname" aria-label="First name">
+              </div>
+    
+              <div class="col">
+                <input type="text" class="form-control" placeholder="First name" formControlName="skill" aria-label="First name">
+              </div>
+          </div>
+        </fieldset>
+    
+          </form>    
+          <pre class="m-t-15">{{nestedFormGroupSample.value| json}}</pre>
+      </div>
+    </div>
+  </div>
+</div>
+

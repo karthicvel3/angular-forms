@@ -12,7 +12,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 export class DynamicFormsComponent {
 
   public dynamicForm: FormGroup = new FormGroup({});
-  public fields = [
+  public formFields = [
     {label: 'Full Name', name: 'full_name', type: 'text'},
     {label: 'Email', name: 'email', type: 'text'},
     {label: 'Comments', name: 'comments', type: 'textarea'},
@@ -21,14 +21,21 @@ export class DynamicFormsComponent {
   
   constructor() { }
 
-
   ngOnInit() {
     let controls:any = {};
-    this.fields.map(field => {
-       controls[field.name] = new FormControl();
+    this.formFields.map(field => {
+      if(field.name=="checkbox"){
+        controls[field.name] = new FormControl(false);
+      }else{
+        controls[field.name] = new FormControl();
+      }
     });
-    console.log(controls);
+ 
     this.dynamicForm = new FormGroup(controls);
+    console.log(this.dynamicForm);
+  }
 
+  onClickCheckBox(event:any){
+    this.dynamicForm.get('checkbox')?.setValue(event.target.checked);
   }
 }

@@ -1,12 +1,12 @@
 <div class="card m-t-50">
     <h5 class="card-header">Select Control</h5>
-    <div class="card-body">
-         <select class="form-select" [formControl]="selectFormControl" aria-label="Default select example">
+    <div class="card-body" [formGroup]="selectboxfromgroup">
+         <select (change)="onSelectBox($event)" class="form-select" formControlname="selectFormControl" aria-label="Default select example">
             <option value="">Select option</option>
             <option *ngFor="let value of selectBox" [value]="value.name">{{value.name}}</option>
           </select>
           <pre class="m-t-15">
-            {{selectFormControl.value}}
+            {{selectboxfromgroup.value | json}}
           </pre>
     </div>
   </div>

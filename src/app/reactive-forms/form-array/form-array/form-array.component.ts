@@ -10,7 +10,10 @@ import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular
 })
 export class FormArrayComponent {
 
-  skills = new FormArray([new FormControl()])
+  singleArrayForm = new FormGroup({
+     skills: new FormArray([])
+  });
+  
 
   formArraySample = new FormGroup({
     fname: new FormControl(''),
@@ -24,13 +27,17 @@ export class FormArrayComponent {
   })
 
 
+  get singleControl(){
+    return (<FormArray>this.singleArrayForm.get('skills'))
+  }
+
   onAddSkill(){
     const customControls = new FormControl('');
-    this.skills.push(customControls)
+    (<FormArray>this.singleArrayForm.get('skills')).push(customControls)
   }
   
   onSubmitSkill(){
-    console.log(this.skills);
+    console.log(this.singleArrayForm);
   }
 
   onMarks(){
@@ -48,8 +55,14 @@ export class FormArrayComponent {
     return (this.formArraySample.get("marks") as FormArray)
   }
 
+  onRemoveItem(index:number){
+    this.customControl.removeAt(index);
+  }
+
   onSubmit(){
     console.log(this.formArraySample)
   }
+
+
 
 }

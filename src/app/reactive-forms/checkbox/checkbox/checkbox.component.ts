@@ -9,6 +9,7 @@ import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular
   styleUrl: './checkbox.component.css'
 })
 export class CheckboxComponent {
+  
   checkboxesDataList = [
     {
       id: 'C001',
@@ -18,52 +19,12 @@ export class CheckboxComponent {
     {
       id: 'C002',
       label: 'Writing',
-      isChecked: true
+      isChecked: false
     },
     {
       id: 'C003',
       label: 'Painting',
       isChecked: true
-    },
-    {
-      id: 'C004',
-      label: 'Knitting',
-      isChecked: false
-    },
-    {
-      id: 'C004',
-      label: 'Dancing',
-      isChecked: false
-    },
-    {
-      id: 'C005',
-      label: 'Gardening',
-      isChecked: true
-    },
-    {
-      id: 'C006',
-      label: 'Drawing',
-      isChecked: true
-    },
-    {
-      id: 'C007',
-      label: 'Gyming',
-      isChecked: false
-    },
-    {
-      id: 'C008',
-      label: 'Cooking',
-      isChecked: true
-    },
-    {
-      id: 'C009',
-      label: 'Scrapbooking',
-      isChecked: false
-    },
-    {
-      id: 'C010',
-      label: 'Origami',
-      isChecked: false
     }
   ]
 
@@ -76,7 +37,6 @@ export class CheckboxComponent {
     this.checkboxesDataList.forEach((data) => {
       (<FormArray>this.checkFormGroup.get("checkboxFormControl")).push(new FormControl(false))
     })
-    console.log(this.checkFormGroup)
   }
 
   get checkBoxControl(){
@@ -93,6 +53,6 @@ export class CheckboxComponent {
     this.checkboxesDataList.forEach((data,index) => {
       this.checkBoxControl.controls[index].reset(false);;
    })
-
   }
+
 }

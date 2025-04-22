@@ -14,17 +14,17 @@ export class FormGroupComponent {
     formGroupSample = new FormGroup({
       fname : new FormControl("Karthicvel"),
       lname : new FormControl("M V"),
-      address : new FormControl("71"),
+      skill : new FormControl("Angular"),
    });
 
    nestedFormGroupSample = new FormGroup({
     fname : new FormControl("Karthicvel"),
     lname : new FormControl("M V"),
-    address : new FormControl("71"),
+    skill : new FormControl("Angular"),
     innerFormGroupSample: new FormGroup({
       fname : new FormControl("Karthicvel"),
       lname : new FormControl("M V"),
-      address : new FormControl("71"),
+      skill : new FormControl("Angular"),
    })
  });
 
