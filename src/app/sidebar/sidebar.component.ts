@@ -44,6 +44,13 @@ export class SidebarComponent {
         { label: '3. Use Value', routerLink:"usevalue"},
         { label: '3. Use Existing', routerLink:"useexisting"}
       ]
+    },
+    {
+      label: 'Dynamic Components',
+      isOpen: false,
+      children: [
+        { label: 'Create Dynamic', routerLink:"dynamic"}
+      ]
     }
   ];
 

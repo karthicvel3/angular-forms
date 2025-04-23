@@ -4,6 +4,7 @@ import { UsefactoryComponent } from './services/usefactory/usefactory/usefactory
 import { UseclassComponent } from './services/useclass/useclass/useclass.component';
 import { UsevalueComponent } from './services/usevalue/usevalue/usevalue.component';
 import { UseexistingComponent } from './services/useexisting/useexisting/useexisting.component';
+import { DynamicComponent } from './dynamic -components/dynamic/dynamic.component';
 
 export const routes: Routes = [
   { path: '', loadChildren: () => import('./reactive-forms/form-control/form-control.module').then(m => m.FormControlModule)},
@@ -15,5 +16,6 @@ export const routes: Routes = [
   { path: 'useclass', component:UseclassComponent},
   { path: 'usefactory', component:UsefactoryComponent},
   { path: 'usevalue', component:UsevalueComponent},
-  { path: 'useexisting', component:UseexistingComponent}
+  { path: 'useexisting', component:UseexistingComponent},
+  { path: 'dynamic', component:DynamicComponent}
 ];
