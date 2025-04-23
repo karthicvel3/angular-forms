@@ -9,18 +9,12 @@ import {FormArray, FormControl, FormGroup, ReactiveFormsModule} from '@angular/f
   styleUrl: './form-control.component.css'
 })
 export class FormControlComponent {
-
-
-
   name = new FormControl('Angular Forms Rock!');
-  
   textAreaValue = new FormControl("TextArea");
   
   
-
-
   onClickFormControl(){
-    this.name.setValue(this.textAreaValue.value);
+    alert(this.textAreaValue.value);
   }
 
 
