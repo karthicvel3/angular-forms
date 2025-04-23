@@ -34,6 +34,16 @@ export class SidebarComponent {
         { label: '5. Select Box',routerLink:"select"},
         { label: '6. Dynamic Form Array',routerLink:"dynamicformarray" },
       ]
+    },
+    {
+      label: 'Services',
+      isOpen: false,
+      children: [
+        { label: '1. Use Class', routerLink:"useclass"},
+        { label: '2. Use Factory', routerLink:"usefactory"},
+        { label: '3. Use Value', routerLink:"usevalue"},
+        { label: '3. Use Existing', routerLink:"useexisting"}
+      ]
     }
   ];
 
