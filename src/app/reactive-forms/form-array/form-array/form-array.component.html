@@ -1,56 +1,74 @@
-<div class="card">
-    <h5 class="card-header">Form Array</h5>
-    <div class="card-body">
-      <form [formGroup]="singleArrayForm">
-    <div class="row g-3">
-        <div class="col">
-            <button type="button" class="btn btn-primary m-r-10" (click)="onAddSkill()">Add Skill</button>
-            <button type="button" class="btn btn-primary m-r-10" (click)="onSubmitSkill()">Submit Skill</button>
-            <div formArrayName="skills">
-                <div *ngFor="let skill of singleControl.controls; index as i">
-                  <label class="m-t-15">Add Skills {{i+1}}</label>
-                    <input type="text" class="form-control" placeholder="skill" formControlName="{{i}}" aria-label="skill">
-                </div>
-            </div>
-        </div>
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button class="nav-link active"data-bs-toggle="tab" data-bs-target="#nav-formgroup" type="button" role="tab" aria-controls="nav-home" aria-selected="true">FormArray</button>
+    <button class="nav-link"data-bs-toggle="tab" data-bs-target="#nav-nestedformgroup" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">FormArray and FormGroup</button>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-formgroup" role="tabpanel">
+    <div class="card m-t-50">
+      <h5 class="card-header">Form Array</h5>
+      <div class="card-body">
+        <form [formGroup]="singleArrayForm">
+      <div class="row g-3">
+          <div class="col">
+              <button type="button" class="btn btn-primary m-r-10" (click)="onAddSkill()">Add Skill</button>
+              <button type="button" class="btn btn-primary m-r-10" (click)="onSubmitSkill()">Submit Skill</button>
+              <div formArrayName="skills">
+                  <div *ngFor="let skill of singleControl.controls; index as i">
+                    <label class="m-t-15">Add Skills {{i+1}}</label>
+                      <input type="text" class="form-control" placeholder="skill" formControlName="{{i}}" aria-label="skill">
+                      <button type="button" class="btn-close" aria-label="Close" (click)="onRemove(i)"></button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </form>
+      <pre class="m-t-15">{{ singleArrayForm.value | json}}</pre>
     </div>
-    </form>
-    <pre class="m-t-15">{{ singleArrayForm.value | json}}</pre>
+  </div>
+    
+  </div>
+
+
+  <div class="tab-pane fade" id="nav-nestedformgroup" role="tabpanel">
+    <div class="card m-t-50">
+      <h5 class="card-header">FormArray and FormGroup</h5>
+      <div class="card-body">
+        <form [formGroup]="formArraySample">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" class="form-control"  formControlName="fname" placeholder="First name" aria-label="First name">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Last name" formControlName="lname" aria-label="Last name">
+              </div>
+            </div>
+            <div formArrayName="marks">
+              <ng-container *ngFor="let skill of customControl.controls; let i =index">
+                <div class="row g-3 m-t-15" style="align-items: end;">
+                  <ng-container [formGroupName]="i">
+                    <div class="col">
+                        <label class="m-t-15">Question {{i +1}}</label>
+                        <input type="text" class="form-control" placeholder="Question" formControlName="test1">
+                    </div>
+                        <div class="col">
+                          <label class="m-t-15">Question {{i +1}}</label>
+                          <input type="text" class="form-control" placeholder="Question" formControlName="test2">
+                        </div>
+                        <div class="col">
+                          <button type="button" class="btn-close" aria-label="Close" (click)="onRemoveItem(i)"></button>
+                        </div>
+                    </ng-container>
+                </div>
+              </ng-container>
+            </div>
+            <button type="button" class="btn btn-primary  m-t-15 m-r-10" (click)="onMarks()">Add new Control</button>
+            <button  class="btn btn-primary m-t-15"  (click)="onSubmit()">Submit</button>
+        </form>    
+          <pre class="m-t-15">{{ formArraySample.value | json}}</pre>
+      </div>
+  </div>
   </div>
 </div>
-  
-  <div class="card m-t-50">
-    <h5 class="card-header">FormArray and FormGroup</h5>
-    <div class="card-body">
-      <form [formGroup]="formArraySample">
-        <div class="row g-3">
-            <div class="col">
-              <input type="text" class="form-control"  formControlName="fname" placeholder="First name" aria-label="First name">
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Last name" formControlName="lname" aria-label="Last name">
-            </div>
-          </div>
-          <div formArrayName="marks">
-            <ng-container *ngFor="let skill of customControl.controls; let i =index">
-              <div class="row g-3 m-t-15" >
-                <ng-container [formGroupName]="i">
-                  <div class="col">
-                      <label class="m-t-15">Question {{i +1}}</label>
-                      <input type="text" class="form-control" placeholder="Question" formControlName="test1">
-                  </div>
-                      <div class="col">
-                        <label class="m-t-15">Question {{i +1}}</label>
-                        <input type="text" class="form-control" placeholder="Question" formControlName="test2">
-                      </div>
-                  </ng-container>
-              </div>
-              <button (click)="onRemoveItem(i)">X</button>
-            </ng-container>
-          </div>
-          <button type="button" class="btn btn-primary  m-t-15 m-r-10" (click)="onMarks()">Add new Control</button>
-          <button  class="btn btn-primary m-t-15"  (click)="onSubmit()">Submit</button>
-      </form>    
-        <pre class="m-t-15">{{ formArraySample.value | json}}</pre>
-    </div>
-</div>
+

@@ -59,6 +59,10 @@ export class FormArrayComponent {
     this.customControl.removeAt(index);
   }
 
+  onRemove(index:number){
+    this.singleControl.removeAt(index);
+  }
+
   onSubmit(){
     console.log(this.formArraySample)
   }
