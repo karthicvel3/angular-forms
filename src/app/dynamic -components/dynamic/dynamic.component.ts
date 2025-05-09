@@ -1,4 +1,4 @@
-import { Component, ComponentRef, inject, viewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentRef, inject, QueryList, viewChild, ViewChildren, ViewContainerRef } from '@angular/core';
 import { CreateDynamicComponent } from '../create-dynamic/create-dynamic.component';
 
 @Component({
@@ -9,12 +9,14 @@ import { CreateDynamicComponent } from '../create-dynamic/create-dynamic.compone
 })
 export class DynamicComponent {
 
+  @ViewChildren('container') els: QueryList<any> | undefined;
   outputEvent =''
   viewChildRefernce = viewChild('container', {read:ViewContainerRef});
   componentRef?:ComponentRef<CreateDynamicComponent>;
 
   
   createComponents(){
+    console.log(this.els)
     this.componentRef = this.viewChildRefernce()?.createComponent(CreateDynamicComponent)
     this.componentRef?.setInput("inputvalue", "Input Value")
     this.componentRef?.instance.outputvalue.subscribe(() => {
@@ -24,7 +26,7 @@ export class DynamicComponent {
 
   destoryComponents(){
     this.outputEvent=''
-    this.componentRef?.destroy();
+    this.viewChildRefernce()?.clear();
   }
 
 }

@@ -49,7 +49,15 @@ export class SidebarComponent {
       label: 'Dynamic Components',
       isOpen: false,
       children: [
-        { label: 'Create Dynamic', routerLink:"dynamic"}
+        { label: 'Create Dynamic', routerLink:"dynamic"},
+        { label: 'TemplateRef', routerLink:"template"}
+      ]
+    },
+    {
+      label: 'NGRX',
+      isOpen: false,
+      children: [
+        { label: 'NGRX', routerLink:"ngrxroute"}
       ]
     }
   ];
